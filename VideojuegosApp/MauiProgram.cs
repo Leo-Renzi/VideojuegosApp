@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using VideojuegosApp.Services;
 
 namespace VideojuegosApp
 {
@@ -16,8 +17,12 @@ namespace VideojuegosApp
 
             builder.Services.AddMauiBlazorWebView();
 
+            builder.Services.AddSingleton<UsuarioService>();
+            builder.Services.AddSingleton<VideojuegoService>();
+
+
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 
