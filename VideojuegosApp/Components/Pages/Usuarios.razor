@@ -1,5 +1,69 @@
-﻿<h3>Usuarios</h3>
+﻿@page "/usuarios"
+@inject VideojuegosApp.Services.UsuarioService usuarioService
+
+<h3 class="mb-3">👤 Lista de Usuarios</h3>
+
+<table class="table table-striped table-bordered shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in usuarioService.GetUsuarios())
+        {
+            <tr>
+                <td><img src="@u.Imagen" alt="Foto" width="60" class="rounded-circle shadow" /></td>
+                <td>@u.Nombre</td>
+                <td>@u.Email</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" @onclick="() => ConfirmDelete(u.Id, u.Nombre)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Eliminar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que deseas eliminar a <b>@usuarioSeleccionadoNombre</b>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" @onclick="DeleteUsuario">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
+    private int usuarioSeleccionadoId;
+    private string usuarioSeleccionadoNombre = "";
 
+    private void ConfirmDelete(int id, string nombre)
+    {
+        usuarioSeleccionadoId = id;
+        usuarioSeleccionadoNombre = nombre;
+        JS.InvokeVoidAsync("bootstrapModalShow", "#deleteUserModal");
+    }
+
+    private void DeleteUsuario()
+    {
+        usuarioService.Delete(usuarioSeleccionadoId);
+        JS.InvokeVoidAsync("bootstrapModalHide", "#deleteUserModal");
+    }
+
+    [Inject] IJSRuntime JS { get; set; } = default!;
 }

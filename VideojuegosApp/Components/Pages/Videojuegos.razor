@@ -1,5 +1,65 @@
-﻿<h3>Videojuegos</h3>
+﻿@page "/videojuegos"
+@inject VideojuegosApp.Services.VideojuegoService videojuegoService
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+
+<h3 class="mb-3">🎮 Lista de Videojuegos</h3>
+
+<div class="row">
+    @foreach (var juego in videojuegoService.GetVideojuegos())
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card shadow h-100">
+                <img src="@juego.Imagen" class="card-img-top" alt="@juego.Titulo" />
+                <div class="card-body">
+                    <h5 class="card-title">@juego.Titulo</h5>
+                    <p class="card-text">
+                        <b>Género:</b> @juego.Genero <br />
+                        <b>Consola:</b> @juego.Consola <br />
+                        <b>Precio:</b> $@juego.Precio
+                    </p>
+                    <button class="btn btn-danger btn-sm" @onclick="() => ConfirmDelete(juego.Id, juego.Titulo)">
+                        <i class="bi bi-trash"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteGameModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Eliminar Videojuego</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que deseas eliminar <b>@juegoSeleccionadoNombre</b>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" @onclick="DeleteVideojuego">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
+    private int juegoSeleccionadoId;
+    private string juegoSeleccionadoNombre = "";
 
+    private void ConfirmDelete(int id, string titulo)
+    {
+        juegoSeleccionadoId = id;
+        juegoSeleccionadoNombre = titulo;
+        JS.InvokeVoidAsync("bootstrapModalShow", "#deleteGameModal");
+    }
+
+    private void DeleteVideojuego()
+    {
+        videojuegoService.Delete(juegoSeleccionadoId);
+        JS.InvokeVoidAsync("bootstrapModalHide", "#deleteGameModal");
+    }
 }
