@@ -9,31 +9,30 @@ namespace VideojuegosApp.Services
 {
     public class UsuarioService
     {
-        private List<Usuario> usuarios = new List<Usuario>
+        private readonly List<Usuario> usuarios = new()
         {
-            new Usuario { Id=1, Nombre="Leonardo", Email="leo@example.com", Password="1234", Imagen="images/usuario1.jpg"},
-            new Usuario { Id=2, Nombre="Maria", Email="maria@example.com", Password="abcd", Imagen="images/usuario2.jpg"},
-            new Usuario { Id=3, Nombre="Carlos", Email="carlos@example.com", Password="qwerty", Imagen="images/usuario3.jpg"}
+            new Usuario { Id = 1, NombreUsuario = "admin", Contraseña = "1234", Email = "admin@gmail.com", Imagen="images/avatarhombre.jpg" },
+            new Usuario { Id = 2, NombreUsuario = "user",  Contraseña = "abcd", Email = "user@gmail.com",  Imagen="images/avatarmujer.jpg" }
         };
 
+        // Usuario autenticado actualmente
+        public Usuario? UsuarioActual { get; private set; }
+
+        // --- ABM básico ---
         public List<Usuario> GetUsuarios() => usuarios;
-
         public void Add(Usuario u) => usuarios.Add(u);
-
         public void Delete(int id) => usuarios.RemoveAll(x => x.Id == id);
 
-        public Usuario? GetById(int id) => usuarios.FirstOrDefault(x => x.Id == id);
-
-        public void Update(Usuario usuarioEditado)
+        // --- Login / Logout ---
+        public Usuario? Login(string nombreUsuario, string contraseña)
         {
-            var usuario = usuarios.FirstOrDefault(x => x.Id == usuarioEditado.Id);
-            if (usuario != null)
-            {
-                usuario.Nombre = usuarioEditado.Nombre;
-                usuario.Email = usuarioEditado.Email;
-                usuario.Password = usuarioEditado.Password;
-                usuario.Imagen = usuarioEditado.Imagen;
-            }
+            var user = usuarios.FirstOrDefault(u =>
+                u.NombreUsuario == nombreUsuario && u.Contraseña == contraseña);
+
+            UsuarioActual = user; // queda null si no encontró
+            return user;
         }
+
+        public void Logout() => UsuarioActual = null;
     }
 }

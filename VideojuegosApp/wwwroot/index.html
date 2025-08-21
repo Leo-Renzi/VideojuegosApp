@@ -34,10 +34,9 @@
             var myModal = new bootstrap.Modal(document.querySelector(id));
             myModal.show();
         }
-
         function bootstrapModalHide(id) {
-            var modalEl = document.querySelector(id);
-            var modal = bootstrap.Modal.getInstance(modalEl);
+            var el = document.querySelector(id);
+            var modal = bootstrap.Modal.getInstance(el);
             if (modal) modal.hide();
         }
     </script>
