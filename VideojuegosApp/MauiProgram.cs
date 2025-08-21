@@ -19,6 +19,7 @@ namespace VideojuegosApp
 
             builder.Services.AddSingleton<UsuarioService>();
             builder.Services.AddSingleton<VideojuegoService>();
+            builder.Services.AddSingleton<VideojuegosApp.Services.SessionService>();
 
 
 #if DEBUG

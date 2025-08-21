@@ -1,5 +1,32 @@
-﻿<h3>MenuPrincipal</h3>
+﻿@page "/MenuPrincipal"
+@inject NavigationManager Navigation
+@inject UsuarioService UsuarioService
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4 text-center" style="max-width: 600px;">
+        <h2 class="mb-3">
+            <i class="bi bi-clipboard-check"></i> Menú Principal
+        </h2>
+        <p class="text-muted">Bienvenido, <b>@UsuarioService.UsuarioActual?.NombreUsuario</b> 👋</p>
+
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <button class="btn btn-primary btn-lg" @onclick='() => Navigation.NavigateTo("/videojuegos")'>
+                <i class="bi bi-controller"></i> Videojuegos
+            </button>
+            <button class="btn btn-info btn-lg" @onclick='() => Navigation.NavigateTo("/usuarios")'>
+                <i class="bi bi-people"></i> Usuarios
+            </button>
+            <button class="btn btn-danger btn-lg" @onclick="CerrarSesion">
+                <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            </button>
+        </div>
+    </div>
+</div>
 
 @code {
-
+    private void CerrarSesion()
+    {
+        UsuarioService.Logout();
+        Navigation.NavigateTo("/");
+    }
 }
