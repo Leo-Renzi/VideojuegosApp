@@ -34,18 +34,42 @@ VideojuegosApp/
 - Razor Components
 - Bootstrap 5 (para el diseño visual)
 
-## 🚧 Notas Importantes
 
+## 👨‍💻 Notas del desarrollo
+
+- Este proyecto es mi primera experiencia en Blazor.
 - 🔧 **Datos Hardcodeados**: Tanto los usuarios como los videojuegos están cargados de manera manual en los services (`UsuarioService` y `VideojuegoService`).  
   👉 Esto fue hecho de manera intencional como parte de mi primer experiencia con Blazor, para enfocarme en el funcionamiento y no en la persistencia de datos.
-- Se podrían reemplazar fácilmente por una base de datos real o una API REST en el futuro.
+- En un futuro se podría mejorar con una API real + base de datos para manejar la persistencia.
+- Este proyecto es mi primera experiencia en Blazor.
+- Manejo básico de imágenes desde wwwroot.
+
 
 ## 📸 Capturas de Pantalla
 
-_(Agregar aquí capturas de tu aplicación mostrando el Login, Usuarios y Videojuegos)_
+<img width="1405" height="702" alt="image" src="https://github.com/user-attachments/assets/b379480a-68cd-448f-bc7a-00078533dacc" />
+<img width="1400" height="708" alt="image" src="https://github.com/user-attachments/assets/ab1d9fff-aa08-4667-8039-0f20dd57dc10" />
+<img width="1394" height="693" alt="image" src="https://github.com/user-attachments/assets/feac264b-27db-4053-81ac-5edb0c8cf08a" />
+<img width="1412" height="690" alt="image" src="https://github.com/user-attachments/assets/495be269-a25b-486b-8a76-11dd8b46f0b0" />
+
+
+🚀 Uso
+
+- Iniciar la aplicación.
+- Loguearse con un usuario válido (cargado en memoria con UsuarioService).
+- Acceder al menú principal.
+- Gestionar Usuarios y Videojuegos (altas, bajas, modificaciones, consultas).
 
 ## 🚀 Cómo Ejecutar el Proyecto
 
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com/Leo-Renzi/VideojuegosApp.git
+   
+2. Abrir el proyecto con Visual Studio 2022.
+3. Ejecutar en un emulador o dispositivo real con soporte .NET MAUI.
+
+
+👨‍💻 Autor
+
+Leonardo Renzi
