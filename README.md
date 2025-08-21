@@ -47,10 +47,17 @@ VideojuegosApp/
 
 ## 📸 Capturas de Pantalla
 
+- Emulacion en window machine
 <img width="1405" height="702" alt="image" src="https://github.com/user-attachments/assets/b379480a-68cd-448f-bc7a-00078533dacc" />
 <img width="1400" height="708" alt="image" src="https://github.com/user-attachments/assets/ab1d9fff-aa08-4667-8039-0f20dd57dc10" />
 <img width="1394" height="693" alt="image" src="https://github.com/user-attachments/assets/feac264b-27db-4053-81ac-5edb0c8cf08a" />
 <img width="1412" height="690" alt="image" src="https://github.com/user-attachments/assets/495be269-a25b-486b-8a76-11dd8b46f0b0" />
+
+- Emulacion en dispositivo Android (Android Emulator - pixel_7_-_api_34:5554)
+<img width="471" height="1026" alt="image" src="https://github.com/user-attachments/assets/648806fd-61b4-4ee4-adb3-ea0d5c307ab3" />
+<img width="470" height="1026" alt="image" src="https://github.com/user-attachments/assets/8bb4b8cc-0684-47eb-a889-855e9ef3ced2" />
+<img width="440" height="977" alt="image" src="https://github.com/user-attachments/assets/af50bb54-b68c-4e1f-876f-a72d75d8dfe5" />
+<img width="435" height="984" alt="image" src="https://github.com/user-attachments/assets/ab948185-3f26-46c4-916e-77b20e0e2e83" />
 
 
 🚀 Uso
