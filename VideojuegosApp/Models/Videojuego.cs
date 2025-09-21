@@ -13,6 +13,6 @@ namespace VideojuegosApp.Models
         public string Genero { get; set; } = "";
         public string Consola { get; set; } = "";
         public decimal Precio { get; set; }
-        public string Imagen { get; set; } = ""; // Ruta de imagen local
+        public string Imagen { get; set; } = ""; // Ruta de imagen local...
     }
 }

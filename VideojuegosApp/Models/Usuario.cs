@@ -13,6 +13,6 @@ namespace VideojuegosApp.Models
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public string Imagen { get; set; } = ""; // Ruta de imagen local
-        public string Contraseña { get; internal set; }
+        public string? Contraseña { get; internal set; }
     }
 }
